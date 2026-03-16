@@ -353,8 +353,8 @@ export default function DashboardPage() {
                 <div className="relative z-10">
                   <h3 className="text-[18px] font-bold mb-1">Need More Stats?</h3>
                   <p className="text-[13px] opacity-90 mb-4">Upgrade to pro for added benefits.</p>
-                  <Button className="bg-white text-[#4F46E5] hover:bg-white/95 rounded-full gap-2 h-9 px-5 text-[13px] font-semibold shadow-lg">
-                    <Play className="w-3.5 h-3.5 fill-current" />
+                  <Button className="bg-[#10B981] hover:bg-[#059669] text-white rounded-full gap-2 h-9 px-5 text-[13px] font-semibold shadow-lg">
+                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[3]" />
                     Go Pro Now
                   </Button>
                 </div>
@@ -363,41 +363,30 @@ export default function DashboardPage() {
               {/* Conversion Card */}
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex-1">
                 <h3 className="text-[15px] font-semibold text-gray-900 mb-2">Conversion</h3>
-                <div className="relative h-44 flex items-center justify-center">
-                  <svg viewBox="0 0 200 120" className="w-full h-full">
-                    <defs>
-                      <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#4F46E5" />
-                        <stop offset="50%" stopColor="#6366F1" />
-                        <stop offset="100%" stopColor="#A5B4FC" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#F3F4F6" strokeWidth="16" strokeLinecap="round" />
-                    <path d="M 20 100 A 80 80 0 0 1 165 55" fill="none" stroke="url(#gaugeGradient)" strokeWidth="16" strokeLinecap="round" />
+                <div className="relative flex items-center justify-center" style={{ height: "160px" }}>
+                  <svg viewBox="0 0 220 130" className="w-full h-full">
+                    {/* Background arc (gray) */}
+                    <path d="M 18 115 A 92 92 0 0 1 202 115" fill="none" stroke="#E0E4F0" strokeWidth="28" strokeLinecap="butt" />
+                    {/* Filled arc (indigo) ~58% */}
+                    <path d="M 18 115 A 92 92 0 0 1 174 42" fill="none" stroke="#4F46E5" strokeWidth="28" strokeLinecap="butt" />
+                    {/* Needle line at cutoff */}
+                    <line x1="174" y1="42" x2="183" y2="30" stroke="#6366F1" strokeWidth="2.5" strokeLinecap="round" />
                   </svg>
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
-                    <p className="text-[32px] font-bold text-[#4F46E5]">58,19%</p>
-                    <div className="flex items-center gap-1 text-[#4F46E5] text-[13px] font-semibold justify-center">↑ 3.5%</div>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center whitespace-nowrap">
+                    <p className="text-[30px] font-bold text-gray-900 leading-none">58,19%</p>
+                    <div className="flex items-center gap-1 text-[#10B981] text-[13px] font-semibold justify-center mt-1">↑ 3.5%</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-[#4F46E5]/10 flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-[#4F46E5]" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-gray-400 font-medium">Income</p>
-                      <p className="text-[14px] font-bold text-gray-900">$542,317</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#10B981]" />
+                    <span className="text-[12px] text-gray-400">Income</span>
+                    <span className="text-[14px] font-bold text-gray-900">$542,317</span>
                   </div>
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center">
-                      <ArrowUpRight className="w-3.5 h-3.5 text-gray-500" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] text-gray-400 font-medium">Expences</p>
-                      <p className="text-[14px] font-bold text-gray-900">$497,456</p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                    <span className="text-[12px] text-gray-400">Expences</span>
+                    <span className="text-[14px] font-bold text-gray-900">$497,456</span>
                   </div>
                 </div>
               </div>
