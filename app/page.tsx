@@ -33,9 +33,9 @@ function Sidebar({ activeItem, setActiveItem, onClose }: { activeItem: string; s
   return (
     <aside className="w-[220px] bg-white h-full flex flex-col py-6 px-4" style={{ boxShadow: "2px 0 8px rgba(0,0,0,0.06)" }}>
       <div className="flex items-center justify-between mb-8 px-2">
-        <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-amber-400 rounded-lg flex items-center justify-center rotate-12 flex-shrink-0">
-            <span className="text-white font-bold text-base -rotate-12">R</span>
+        <div className="flex items-center gap-2.5">
+          <div className="w-10 h-10 bg-amber-400 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}>
+            <span className="text-white font-bold text-base">R</span>
           </div>
           <span className="text-xl font-bold text-gray-900">flex</span>
         </div>
@@ -124,45 +124,63 @@ export default function DashboardPage() {
       <div className="flex-1 min-w-0 flex flex-col gap-5 p-4 sm:p-5 lg:p-6">
 
         {/* Header */}
-        <header className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Mobile menu button */}
-            <button
-              className="lg:hidden w-9 h-9 rounded-full border border-gray-200 bg-white flex items-center justify-center shadow-sm"
-              onClick={() => setSidebarOpen(true)}
-            >
-              <Menu className="w-4 h-4 text-gray-500" />
-            </button>
-            <button className="hidden sm:flex w-8 h-8 rounded-full border border-gray-200 bg-white items-center justify-center hover:bg-gray-50 shadow-sm">
-              <ChevronLeft className="w-4 h-4 text-gray-400" />
-            </button>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-[160px] sm:w-[240px] lg:w-[300px] h-9 pl-9 pr-4 rounded-full border border-gray-200 bg-white text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 shadow-sm"
-              />
+        <header className="flex items-center gap-3 bg-white rounded-2xl px-4 py-2.5" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
+          {/* Logo — visible only on mobile (desktop sidebar has it) */}
+          <div className="flex lg:hidden items-center gap-2 mr-1">
+            <div className="w-9 h-9 bg-amber-400 flex items-center justify-center flex-shrink-0" style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}>
+              <span className="text-white font-bold text-base">R</span>
             </div>
+            <span className="text-lg font-bold text-gray-900">flex</span>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3">
-            <button className="relative w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 shadow-sm">
-              <svg className="w-[18px] h-[18px] text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+
+          {/* Mobile menu button */}
+          <button className="lg:hidden w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-50 flex-shrink-0" onClick={() => setSidebarOpen(true)}>
+            <Menu className="w-4 h-4 text-gray-500" />
+          </button>
+
+          {/* Back button */}
+          <button className="hidden sm:flex w-8 h-8 rounded-full border border-gray-200 items-center justify-center hover:bg-gray-50 flex-shrink-0">
+            <ChevronLeft className="w-4 h-4 text-gray-400" />
+          </button>
+
+          {/* Search */}
+          <div className="relative flex-1 max-w-xs sm:max-w-sm lg:max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="w-full h-9 pl-10 pr-4 rounded-full border border-gray-200 bg-[#F8F9FB] text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            />
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+            {/* Bell */}
+            <button className="relative w-9 h-9 flex items-center justify-center hover:bg-gray-50 rounded-full flex-shrink-0">
+              <svg className="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M13.73 21a2 2 0 0 1-3.46 0" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span className="absolute top-1.5 right-2 w-2 h-2 bg-[#4F46E5] rounded-full border-2 border-white" />
+              <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-[#4F46E5] rounded-full border-2 border-white" />
             </button>
-            <div className="hidden sm:block bg-white rounded-xl px-3 py-1.5 border border-gray-100 shadow-sm">
+
+            {/* Balance */}
+            <div className="hidden sm:block">
               <p className="text-[10px] text-gray-400 font-medium leading-none mb-0.5">Your Balance</p>
               <p className="text-sm font-bold text-[#4F46E5] leading-none">$5,456</p>
             </div>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-8 bg-gray-200" />
+
+            {/* Avatar + name */}
             <div className="flex items-center gap-2">
-              <Avatar className="w-9 h-9 border-2 border-white shadow-md">
+              <Avatar className="w-9 h-9 border-2 border-amber-200 shadow-sm flex-shrink-0">
                 <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="User" />
-                <AvatarFallback className="bg-orange-100 text-orange-600 text-sm">LA</AvatarFallback>
+                <AvatarFallback className="bg-orange-400 text-white text-sm font-bold">LA</AvatarFallback>
               </Avatar>
-              <p className="hidden sm:block text-sm font-semibold text-gray-900">Hi, Lay</p>
+              <p className="hidden sm:block text-sm font-semibold text-gray-800">
+                <span className="text-gray-400 font-normal">Hi, </span>Lay
+              </p>
             </div>
           </div>
         </header>
